@@ -1,0 +1,50 @@
+Step-1
+
+power the raspberry with 5v with Type-B adapter or usb cable with the
+help of ur laptop
+
+Step-2
+
+change the moble hotspot name and password with
+
+(username : ras
+password : 12345678)
+
+--> note: the laptop or PC and raspberry pi must be connected to in same network
+
+Step-3
+
+copy the raspberrypi IP address from the mobile hotspot configuration 
+settings and paste it realvnc viewer
+
+if username and password asked to open the raspberry desktop given below
+
+(username : pi
+password : root)
+
+step - 4
+
+open the smart energy meter folder and as well as energy monitor.py file 
+in the raspberry desktop click the green run button to run the code. once
+it runs you can see the results in the bottom shell
+
+step - 5
+
+to see values in the database open the terminal in raspberry pi and use 
+this command 
+
+--> sqlitebrowser /home/pi/Desktop/Smart_Energy_Meter/sensor_data.db &
+
+or to see the last 10 recorded values stored in the database us this command
+
+--> python3 -c "import sqlite3; conn=sqlite3.connect('/home/pi/Desktop/Smart_Energy_Meter/sensor_data.db'); c=conn.cursor(); c.execute('SELECT id, timestamp, voltage, current, power, temperature, humidity FROM energy_logs ORDER BY id DESC LIMIT 10'); rows=c.fetchall(); print(f'{\"ID\":<4} | {\"Timestamp\":<19} | {\"Volt\":<6} | {\"Amp\":<6} | {\"Watt\":<7} | {\"Temp\":<5} | {\"Hum\"}'); print('-'*65); [print(f'{r[0]:<4} | {r[1]:<19} | {r[2]:<6} | {r[3]:<6} | {r[4]:<7} | {r[5]}C | {r[6]}%') for r in rows]; conn.close()"
+
+
+
+
+
+
+
+
+
+
